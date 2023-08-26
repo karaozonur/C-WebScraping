@@ -6,17 +6,17 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HisselerMynetV2
+namespace HisselerMidas
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             var web = new HtmlWeb();
-            var htmlDOC = web.Load("https://finans.mynet.com/borsa/hisseler/");
-            //https://finans.mynet.com/borsa/canliborsa/
+            var htmlDOC = web.Load("https://www.getmidas.com/canli-borsa/");
+            //https://kur.doviz.com/
 
-            var stringID = " scrollable wfull search-table table-data ";
+            var stringID = "stock-table w-100";
 
             var tables = htmlDOC.DocumentNode.SelectNodes($"//table[@class='{stringID}']");
 
@@ -34,7 +34,7 @@ namespace HisselerMynetV2
                         {
                             foreach (var cell in cells)
                             {
-                                Console.Write(cell.InnerText.Trim() + "\t");
+                                Console.Write(cell.InnerText.Trim() + "\t\n");
                                 Console.Out.NewLine = "\r\n\r\n";
                             }
 
